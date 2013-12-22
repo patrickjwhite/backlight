@@ -51,6 +51,8 @@ or for gcc I would do just:
 
     CXXFLAGS="-std=c++1y" cmake ..
 
+then I just run `make`.
+
 Installation
 ------------
 
