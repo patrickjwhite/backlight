@@ -21,7 +21,6 @@ flags = [
 '-isystem', '/usr/local/include',
 '-isystem', '/usr/include/x86_64-linux-gnu',
 '-isystem', '/usr/include',
-'-I', '/usr/local/src/yeppp/1.0.0/library/headers',
 '-I', '/opt/qt/5.2.0/linux/mkspecs/linux-clang',
 '-I', '/opt/qt/5.2.0/linux/include',
 '-I', '/opt/qt/5.2.0/linux/include/QtCLucene',
