@@ -4,6 +4,8 @@ backlight
 As of now, this is a crude tool built on Qt 5.2 to provide a simple slider for
 controlling my system's LED backlight.
 
+![screenshot](http://i.imgur.com/loAUO87.png)
+
 Why?
 ----
 
