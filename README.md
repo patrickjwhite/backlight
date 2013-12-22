@@ -62,7 +62,9 @@ I don't provide an install package, so, the installation is sparse currently.
 `backlight` that should be copied to `/usr/local/bin/`.
 - There's a `.desktop` file that should be copied to
 `~/.local/share/applications/` and a corresponding svg icon that should be
-copied to `~/.local/share/icons/backlight/`.
+copied to `~/.local/share/icons/backlight/`. Please, edit the `.desktop` file
+with a text editor for setting the correct icon path. This must be a fully
+expanded path.
 - There's a `backlight.sh` script to relax file permissions of the backlight
 system files. It should be copied to `/etc/init.d/` and after that the command
 `sudo update-rc.d -f backlight.sh defaults 99 ` should be executed for

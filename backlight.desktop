@@ -6,4 +6,4 @@ Terminal=false
 Exec=backlight
 Name=backlight
 Comment=Backlight Fine Control
-Icon=/home/francisco/.local/share/icons/backlight/sun.svg
+Icon=<your home path>/.local/share/icons/backlight/sun.svg
