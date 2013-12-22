@@ -5,7 +5,6 @@ import QtQuick.Controls.Styles 1.1
 
 ApplicationWindow {
     id: backlight
-    objectName: "backlight"
     flags: Qt.SplashScreen | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     visible: true
     title: qsTr("backlight")
