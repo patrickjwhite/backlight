@@ -6,13 +6,13 @@
 
 Slider::Slider() {
     if(!brightness.open(QIODevice::ReadWrite | QIODevice::Text)) {
-        qDebug() << "could not open "<< brightness.fileName();
+        qDebug() << "could not open" << brightness.fileName();
         std::exit(EXIT_FAILURE);
     }
 
     QFile maxBrightness{ maxBrightnessPath };
     if(!maxBrightness.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "could not open "<< maxBrightness.fileName();
+        qDebug() << "could not open" << maxBrightness.fileName();
         std::exit(EXIT_FAILURE);
     }
 
