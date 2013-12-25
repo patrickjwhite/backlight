@@ -1,6 +1,9 @@
 #include "slider.h"
 #include <cmath>
 #include <cstdlib>
+#include <sstream>
+#include <iomanip>
+#include <QQuickWindow>
 #include <QProcess>
 #include <QDebug>
 
@@ -27,7 +30,13 @@ Slider::Slider() {
 
     engine.load(QUrl{"qrc:/main.qml"});
 
-    auto backlight = engine.rootObjects().first();
+    auto backlight = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
+
+    std::stringstream ss;
+    ss << "0x" << std::hex << backlight->winId();
+    QStringList args = { "-i", "-r", ss.str().c_str(), "-b", "add,above" };
+    wmctrl.start("wmctrl", args);
+
     connect(backlight, SIGNAL(onSlide(qreal)), this, SLOT(onSlide(qreal)));
     backlight->setProperty("slideValue", std::pow(brightnessValue / maxBrightnessValue, 0.5));
 }

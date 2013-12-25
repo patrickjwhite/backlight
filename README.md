@@ -41,6 +41,8 @@ Building
 - CMake (>=2.8.11)
 - Qt (>=5.2)
 - C++1y compiler
+- [wmctrl](http://tomas.styblo.name/wmctrl/) (used internally to set "always on
+  top" flag)
 
 For building with clang for example, I create a build directory under the source
 root, and then inside it I call cmake like the following:
