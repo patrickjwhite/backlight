@@ -5,6 +5,7 @@ project(backlight)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+find_package(X11 REQUIRED)
 find_package(Qt5Quick REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
@@ -21,4 +22,4 @@ qt5_add_resources(ResourceSources ${Resources})
 
 add_executable(backlight ${Sources} ${ResourceSources} ${QtSingleApplicationSources})
 
-target_link_libraries(backlight Qt5::Widgets Qt5::Quick)
+target_link_libraries(backlight X11 Qt5::Widgets Qt5::Quick)

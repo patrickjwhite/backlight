@@ -3,7 +3,6 @@
 
 #include <QFile>
 #include <QObject>
-#include <QProcess>
 #include <QQmlApplicationEngine>
 
 class Slider : public QObject {
@@ -17,7 +16,6 @@ private:
     constexpr static auto maxBrightnessPath = "/sys/class/backlight/intel_backlight/max_brightness";
     QQmlApplicationEngine engine;
     QFile brightness{ brightnessPath };
-    QProcess wmctrl;
     int maxBrightnessValue;
 };
 
