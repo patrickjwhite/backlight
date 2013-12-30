@@ -33,34 +33,30 @@ alter it under root. To avoid always have to run the tool under root I instead
 created a simple script to run on each boot that relax the permissions for the
 `brightness` file so any user can make changes.
 
-Building
---------
+Requiriments
+------------
 
-### Requiriments
+- Qt (>=5.2.0)
 
-- CMake (>=2.8.11)
-- Qt (>=5.2)
-- libx11-dev
-- C++1y compiler
+- If [_QML support for the Go language_](https://github.com/niemeyer/qml) is not
+already installed, a prior proper Qt 5 environment for building the dependency
+is necessary. For Ubuntu I use the following:
 
-For building with clang for example, I create a build directory under the source
-root, and then inside it I call cmake like the following:
+        QT5PATH=<Qt 5 install location>
+        QT5VERSION=<Qt 5 Version Number, e.g., 5.2.0>
+        export PKG_CONFIG_PATH=$QT5PATH/lib/pkgconfig
+        export CGO_CPPFLAGS=-I$QT5PATH/include/QtCore/$QT5VERSION/QtCore
 
-    CC=clang CXX=clang++ CXXFLAGS="-std=c++1y -stdlib=libc++" LDFLAGS="-stdlib=libc++ -lcxxrt -ldl" cmake ..
-
-or for gcc I would do just:
-
-    CXXFLAGS="-std=c++1y" cmake ..
-
-then I just run `make`.
+    more instructions at the _QML support for Go_ repository.
 
 Installation
 ------------
 
+    go get github.com/oblitum/backlight
+
 I don't provide an install package, so, the installation is sparse currently.
 
-- After build, the tool is just the single generated executable called
-`backlight` that should be copied to `/usr/local/bin/`.
+- the tool is the single generated executable installed under `$GOPATH/bin`.
 - There's a `.desktop` file that should be copied to
 `~/.local/share/applications/` and a corresponding svg icon that should be
 copied to `~/.local/share/icons/backlight/`. Please, edit the `.desktop` file
@@ -96,3 +92,9 @@ change the `/etd/default/grub` boot parameter line to the following, adding the
 After changing I run `sudo update-grub` for it to take effect.
 
 By the way, I changed my Ubuntu to boot with EFI boot, which is much faster.
+
+Notice
+------
+
+This is the Go port of the original C++ project. For the C++ version check the
+[cpp](https://github.com/oblitum/backlight/tree/cpp) branch.

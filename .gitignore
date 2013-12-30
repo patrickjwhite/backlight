@@ -1,73 +1,25 @@
 # Created by http://gitignore.io
 
-### CMake ###
-CMakeCache.txt
-CMakeFiles
-Makefile
-cmake_install.cmake
-install_manifest.txt
-
-### Qt ###
-# C++ objects and libs
-
-*.slo
-*.lo
+### Go ###
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
 *.a
-*.la
-*.lai
-*.so
-*.dll
-*.dylib
-
-# Qt-es
-CMakeLists.txt.user
-*.pro.user
-*.pro.user.*
-moc_*.cpp
-qrc_*.cpp
-ui_*.h
-Makefile
-*-build-*
-
-### Python ###
-*.py[cod]
-
-# C extensions
 *.so
 
-# Packages
-*.egg
-*.egg-info
-dist
-build
-eggs
-parts
-bin
-var
-sdist
-develop-eggs
-.installed.cfg
-lib
-lib64
-__pycache__
+# Folders
+_obj
+_test
 
-# Installer logs
-pip-log.txt
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
 
-# Unit test / coverage reports
-.coverage
-.tox
-nosetests.xml
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
 
-# Translations
-*.mo
+_testmain.go
 
-# Mr Developer
-.mr.developer.cfg
-.project
-.pydevproject
-
-# Rope
-.ropeproject
-
+*.exe
