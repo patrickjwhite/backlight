@@ -124,15 +124,15 @@ func NewWindow(component qml.Object) (window *Window, err error) {
 		return nil, err
 	}
 
+	defer func() { if err != nil { window.brightnessFile.Close() } }()
+
 	contents, err = ioutil.ReadAll(window.brightnessFile)
 	if err != nil {
-		window.brightnessFile.Close()
 		return nil, err
 	}
 
 	brightness, err := strconv.ParseFloat(strings.TrimSpace(string(contents)), 64)
 	if err != nil {
-		window.brightnessFile.Close()
 		return nil, err
 	}
 
