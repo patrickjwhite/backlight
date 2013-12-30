@@ -53,8 +53,8 @@ const (
 				value: backlight.slide
 				focus: true
 				onValueChanged: backlight.onSlide(value)
-				Keys.onSpacePressed: ctrl.close()
-				Keys.onEscapePressed: ctrl.close()
+				Keys.onSpacePressed: ctrl.destroy()
+				Keys.onEscapePressed: ctrl.destroy()
 
 				style: SliderStyle {
 					groove: Rectangle {
@@ -92,7 +92,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	defer window.Close()
+	defer window.Destroy()
 
 	engine.Context().SetVar("ctrl", window)
 	window.Show()
@@ -154,7 +154,7 @@ func (window *Window) OnSlide(value float64) {
 	window.SetBrightness(value)
 }
 
-func (window *Window) Close() {
+func (window *Window) Destroy() {
 	if window.Window != nil {
 		window.Window.Destroy()
 		window.Window = nil
