@@ -38,7 +38,7 @@ Requiriments
 
 - Qt (>=5.2.0)
 
-- If [_QML support for the Go language_](https://github.com/niemeyer/qml) is not
+- If [_QML support for the Go language_](https://github.com/oblitum/qml) is not
 already installed, a prior proper Qt 5 environment for building the dependency
 is necessary. For Ubuntu I use the following:
 
