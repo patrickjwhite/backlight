@@ -43,6 +43,14 @@ Building
 - libx11-dev
 - C++1y compiler
 
+### Cloning
+
+    git clone git@github.com:oblitum/backlight.git
+    cd backlight
+    git checkout cpp
+    git submodule init
+    git submodule update
+
 For building with clang for example, I create a build directory under the source
 root, and then inside it I call cmake like the following:
 
