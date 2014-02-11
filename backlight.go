@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/BurntSushi/xgb"
 	"github.com/BurntSushi/xgb/xproto"
-	"github.com/oblitum/qml"
+	"github.com/niemeyer/qml"
 	"io/ioutil"
 	"log"
 	"math"
@@ -173,7 +173,7 @@ const (
 )
 
 func (window *Window) AlwaysOnTop() {
-	xid := xproto.Window(window.WinId())
+	xid := xproto.Window(window.PlatformId())
 	X, err := xgb.NewConn()
 	if err != nil {
 		log.Println(err)
