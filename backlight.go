@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/BurntSushi/xgb"
 	"github.com/BurntSushi/xgb/xproto"
+	"github.com/BurntSushi/xgbutil"
+	"github.com/BurntSushi/xgbutil/ewmh"
 	"github.com/niemeyer/qml"
 	"io/ioutil"
 	"log"
@@ -174,44 +175,16 @@ const (
 
 func (window *Window) AlwaysOnTop() {
 	xid := xproto.Window(window.PlatformId())
-	X, err := xgb.NewConn()
-	if err != nil {
-		log.Println(err)
-		return
-	}
-	defer X.Close()
 
-	state, err := xproto.InternAtom(X, false, uint16(len("_NET_WM_STATE")),
-		"_NET_WM_STATE").Reply()
+	X, err := xgbutil.NewConn()
 	if err != nil {
 		log.Println(err)
 		return
 	}
 
-	stateAbove, err := xproto.InternAtom(X, false,
-		uint16(len("_NET_WM_STATE_ABOVE")), "_NET_WM_STATE_ABOVE").Reply()
+	err = ewmh.WmStateReq(X, xid, _NET_WM_STATE_ADD, "_NET_WM_STATE_ABOVE")
 	if err != nil {
 		log.Println(err)
 		return
-	}
-
-	evt := xproto.ClientMessageEvent{
-		Window: xid,
-		Format: 32,
-		Type:   state.Atom,
-		Data: xproto.ClientMessageDataUnionData32New([]uint32{
-			_NET_WM_STATE_ADD,
-			uint32(stateAbove.Atom),
-			0,
-			0,
-			0,
-		}),
-	}
-
-	err = xproto.SendEventChecked(X, false, xproto.Setup(X).DefaultScreen(X).Root,
-		xproto.EventMaskSubstructureRedirect|xproto.EventMaskSubstructureNotify,
-		string(evt.Bytes())).Check()
-	if err != nil {
-		log.Println(err)
 	}
 }
