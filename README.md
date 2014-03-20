@@ -38,16 +38,16 @@ Requiriments
 
 - Qt (>=5.2.0)
 
-- If [_QML support for the Go language_](https://github.com/niemeyer/qml) is not
-already installed, a prior proper Qt 5 environment for building the dependency
-is necessary. For Ubuntu I use the following:
+- If [Go QML](https://github.com/go-qml/qml) is not already installed, a prior
+proper Qt 5 environment for building the dependency is necessary. For Ubuntu I
+use the following:
 
         QT5PATH=<Qt 5 install location>
         QT5VERSION=<Qt 5 Version Number, e.g., 5.2.0>
         export PKG_CONFIG_PATH=$QT5PATH/lib/pkgconfig
         export CGO_CPPFLAGS=-I$QT5PATH/include/QtCore/$QT5VERSION/QtCore
 
-    more instructions at the _QML support for Go_ repository.
+    more instructions in the _Go QML_ repository.
 
 Installation
 ------------
