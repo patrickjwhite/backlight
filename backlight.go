@@ -167,12 +167,6 @@ func (window *Window) Close() {
 	}
 }
 
-const (
-	_NET_WM_STATE_REMOVE = 0
-	_NET_WM_STATE_ADD    = 1
-	_NET_WM_STATE_TOGGLE = 2
-)
-
 func (window *Window) AlwaysOnTop() {
 	xid := xproto.Window(window.PlatformId())
 
@@ -181,8 +175,9 @@ func (window *Window) AlwaysOnTop() {
 		log.Println(err)
 		return
 	}
+	defer X.Conn().Close()
 
-	err = ewmh.WmStateReq(X, xid, _NET_WM_STATE_ADD, "_NET_WM_STATE_ABOVE")
+	err = ewmh.WmStateReq(X, xid, ewmh.StateAdd, "_NET_WM_STATE_ABOVE")
 	if err != nil {
 		log.Println(err)
 		return
